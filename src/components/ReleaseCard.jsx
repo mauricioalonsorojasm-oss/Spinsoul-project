@@ -5,11 +5,13 @@ export default function ReleaseCard({ release }) {
   return (
 
     <div className="release-card">
-      <img
-        src={release.coverUrl}
-        alt={release.title}
-        className="release-card__image"
-      />
+      <Link to={`/releases/${release.id}`}>
+        <img
+          src={release.coverUrl}
+          alt={release.title}
+          className="release-card__image"
+        />
+      </Link>
       <div className="release-card__content">
         <h3 className="release-card__title">{release.title}</h3>
         <p className="release-card__info">
@@ -20,3 +22,4 @@ export default function ReleaseCard({ release }) {
     </div>
   );
 }
+
