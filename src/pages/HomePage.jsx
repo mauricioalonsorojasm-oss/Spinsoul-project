@@ -19,8 +19,8 @@ function HomePage() {
       .catch((err) => console.error(err));
   }, []);
 
- const suggestedReleases = useMemo(() => releases.slice(0, 10), [releases]);
-const suggestedArtists = useMemo(() => artists.slice(0, 8), [artists]);
+const suggestedReleases =  releases.slice(0, 10)
+const suggestedArtists =  artists.slice(0, 8)
 
 
   return (
