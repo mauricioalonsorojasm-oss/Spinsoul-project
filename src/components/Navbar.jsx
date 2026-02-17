@@ -19,7 +19,7 @@ export default function Navbar({ query, setQuery, onAddRecord }) {
           <NavLink to="/" end>
             Home
           </NavLink>
-          <NavLink to="/releases">Releases</NavLink>
+          <NavLink to="/releases">Releases</NavLink> 
           <NavLink to="/artists">Artists</NavLink>
           <NavLink to="/about">About</NavLink>
         </nav>

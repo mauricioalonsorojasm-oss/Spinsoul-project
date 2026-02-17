@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // importamos Link de react-router-dom para crear enlaces a otras páginas dentro de nuestra aplicación
 
-export default function ReleaseCard({ release, onDelete }) {
+export default function ReleaseCard({ release, onDelete }) { // esta funcion exporta el componente ReleaseCard, que recibe un objeto release con la información del lanzamiento y una función onDelete para eliminar el lanzamiento (si se proporciona)
   return (
     <div className="card">
 
-      {onDelete && (
+      {onDelete && ( // si se proporciona la función onDelete, mostramos un botón de eliminar en la esquina superior derecha de la tarjeta en releases
         <button
           className="delete-btn"
           onClick={() => onDelete(release.id)}
@@ -13,11 +13,11 @@ export default function ReleaseCard({ release, onDelete }) {
         </button>
       )}
 
-      <Link
+      <Link // usamos Link para crear un enlace a la página de detalles del lanzamiento, pasando el id del lanzamiento en la URL
         to={`/releases/${release.id}`}
         style={{ textDecoration: "none" }}
       >
-        <img
+        <img 
           className="cover"
           src={release.coverUrl}
           alt={release.title}
@@ -44,6 +44,3 @@ export default function ReleaseCard({ release, onDelete }) {
 }
 
 
-
-// En este componente importamos Link de react-router-dom y lo usamos para crear un enlace a la página de detalles del lanzamiento
-// Para el navbar hacemos que se muestre como en Footer y con un enlace a la página de detalles del lanzamiento

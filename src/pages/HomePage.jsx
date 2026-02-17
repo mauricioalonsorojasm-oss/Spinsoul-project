@@ -7,24 +7,24 @@ function HomePage() {
   const [artists, setArtists] = useState([]);
   const [releases, setReleases] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {  // usamos el useEffect para ejecutar el código cuando el componente se monta
     axios
-      .get("http://localhost:5005/artists")
+      .get("http://localhost:5005/artists") // usamos axios para hacer la petición a la API para traer los artistas y guardarlos en el estado
       .then((res) => setArtists(res.data))
       .catch((err) => console.error(err));
 
     axios
-      .get("http://localhost:5005/releases")
+      .get("http://localhost:5005/releases") // y aqui hacemos lo mismo para los lanzamientos (releases)
       .then((res) => setReleases(res.data))
       .catch((err) => console.error(err));
   }, []);
 
- const suggestedReleases = useMemo(() => releases.slice(0, 10), [releases]);
-const suggestedArtists = useMemo(() => artists.slice(0, 8), [artists]);
+ const suggestedReleases = useMemo(() => releases.slice(0, 10), [releases]); // usamos useMemo para memorizar los lanzamientos sugeridos y evitar cálculos innecesarios en cada renderizado. Aquí simplemente tomamos los primeros 10 lanzamientos de la lista completa.
+const suggestedArtists = useMemo(() => artists.slice(0, 8), [artists]); // hacemos lo mismo para los artistas sugeridos, tomando los primeros 8 de la lista completa.
 
 
   return (
-    <div className="page">
+    <div className="page"> {/* Aqui creamos la estructura de la página con diferentes secciones como el navbar, el hero y el footer */}
       {/* HERO */}
       <section className="hero-card">
         <div className="hero-left">
@@ -46,7 +46,7 @@ const suggestedArtists = useMemo(() => artists.slice(0, 8), [artists]);
           </div>
         </div>
 
-        <div className="hero-right">
+        <div className="hero-right">  {/* Aqui creamos la sección de filtros para buscar lanzamientos y artistas pero lo tenemos que acabar con la parte de la API */}
           <div className="hero-filters">
             <select className="select">
               <option value="">Select Genre</option>
@@ -86,7 +86,7 @@ const suggestedArtists = useMemo(() => artists.slice(0, 8), [artists]);
 
       <div className="grid">
         {suggestedReleases.map((release) => (
-          <ReleaseCard key={release.id} release={release} />
+          <ReleaseCard key={release.id} release={release} onDelete={null} />
         ))}
       </div>
 
@@ -98,7 +98,7 @@ const suggestedArtists = useMemo(() => artists.slice(0, 8), [artists]);
         </Link>
       </div>
 
-      <div className="grid">
+      <div className="grid"> 
         {suggestedArtists.map((artist) => (
           <Link key={artist.id} to={`/artists/${artist.id}`} style={{ textDecoration: "none" }}>
             <div className="card">

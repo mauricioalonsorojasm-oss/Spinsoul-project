@@ -1,3 +1,5 @@
+// importamos las dependencias necesarias para nuestra aplicación, incluyendo React Router para manejar las rutas y useState para manejar el estado del query de búsqueda
+
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -21,11 +23,11 @@ export default function App() {
     navigate("/releases/new");
   }
 
-  return (
+  return (  
     <>
-      <Navbar query={query} setQuery={setQuery} onAddRecord={handleAddRecord} />
+      <Navbar query={query} setQuery={setQuery} onAddRecord={handleAddRecord} /> {/* Aquí pasamos el query y la función para actualizarlo al Navbar para que pueda manejar la búsqueda */}
 
-      <Routes>
+      <Routes> {/* Aquí definimos las rutas de nuestra aplicación con React Router para cada una de las vistas */}
         <Route path="/" element={<HomePage />} />
 
         <Route path="/releases" element={<ReleasesListPage query={query} />} />

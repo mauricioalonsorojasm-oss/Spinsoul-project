@@ -19,7 +19,7 @@ function ReleasesListPage({query}) { // esta funcion recibe el query como prop
     });
 }, []);
 
-const handleDelete = (id) => {
+const handleDelete = (id) => { // esta funcion recibe el id del lanzamiento que queremos eliminar en este caso en releases, hacemos una petición a la API para eliminar el lanzamiento de la base de datos y luego actualizamos el estado para eliminarlo de la lista de lanzamientos que se muestra en pantalla
   axios.delete(`http://localhost:5005/releases/${id}`)
     .then(() => {
       setReleases((prev) =>
@@ -39,13 +39,13 @@ const filteredReleases = releases.filter((release) =>
 
 
 
-return (
-    <div className="page">
+return ( // crea la estructura de la página
+    <div className="page"> 
       <div className="meta-row">
         <span>{filteredReleases.length} records</span>
       </div>
 
-      <div className="grid">
+      <div className="grid"> {/* usamos el componente ReleaseCard para mostrar los lanzamientos filtrados por título, y le pasamos la función handleDelete para que se pueda eliminar un lanzamiento desde la tarjeta en releases*/}
         {filteredReleases.map((release) => (
           <ReleaseCard key={release.id} release={release} onDelete={handleDelete}/>
         ))}
@@ -56,8 +56,3 @@ return (
 export default ReleasesListPage;
 
 
-// usamos el useEffect para ejecutar el código cuando el componente se monta
-// usamos axios para hacer la petición a la API para traer los lanzamientos y guardarlos en el estado
-
-
-// Tenemos  
